@@ -31,7 +31,7 @@
 :Namespaces: {OpenShiftName} projects or {KubernetesName} namespaces
 
 // Kafka upgrade attributes
-:ProductVersionUpgradingFrom: 0.9.0
+:ProductVersionUpgradingFrom: 0.9.x
 :ProductVersionUpgradingTo: 0.10.0
 :KafkaVersionLower: 2.0.0
 :KafkaVersionHigher: 2.1.1
