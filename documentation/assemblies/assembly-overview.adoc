@@ -21,7 +21,7 @@ NOTE: The Cluster Operator can deploy the Topic Operator and User Operator (as p
 
 .Operators within the {ProductName} architecture
 
-image:images/operators.png[Operators]
+image:operators.png[Operators]
 
 include::../modules/ref-key-features.adoc[leveloffset=+1]
 
