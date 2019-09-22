@@ -34,18 +34,11 @@ sed -i 's/namespace: .\*/namespace: kafka/' install/cluster-operator/*RoleBindin
 sed -i '' 's/namespace: .\*/namespace: kafka/' install/cluster-operator/*RoleBinding*.yaml
 ----
 
-. Create the new `kafka` namespace.
+. Create the new `kafka` namespace for the {ProductName} Kafka Cluster Operator.
 +
 [source, shell, subs=+quotes ]
 ----
 kubectl create ns kafka
-----
-
-. Deploy the CRDs and role-based access control (RBAC) resources to manage the CRDs.
-+
-[source, shell, subs=+quotes ]
-----
-kubectl apply -f install/cluster-operator/ -n kafka
 ----
 
 . Create the `my-kafka-project` namespace where you will deploy your Kafka cluster.
@@ -56,6 +49,24 @@ kubectl create ns my-kafka-project
 ----
 +
 It is best practice to use namespaces to separate functions.
+
+. Edit the `install/cluster-operator/050-Deployment-strimzi-cluster-operator.yaml` file and set the `STRIMZI_NAMESPACE` environment variable to the namespace `my-kafka-project`.
++
+[source, yaml, subs=+quotes ]
+----
+        # ...
+        env:
+        - name: STRIMZI_NAMESPACE
+          value: my-kafka-project
+        # ...
+----
+
+. Deploy the CRDs and role-based access control (RBAC) resources to manage the CRDs.
++
+[source, shell, subs=+quotes ]
+----
+kubectl apply -f install/cluster-operator/ -n kafka
+----
 
 . Enable the Cluster Operator to watch that namespace.
 +
